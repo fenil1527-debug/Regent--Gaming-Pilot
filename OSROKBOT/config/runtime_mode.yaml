@@ -1,0 +1,18 @@
+# gaming-agent-lab/OSROKBOT/config/runtime_mode.yaml
+system:
+  # Options: "SIM_MODE" (autonomous simulator) or "LIVE_ADVISORY_MODE" (read-only game coach)
+  operating_mode: "LIVE_ADVISORY_MODE"
+  target_game: "Rise of Kingdoms"
+  emergency_stop_hotkey: "ctrl+shift+q"
+
+safety_gates:
+  # Part 76: Default-deny input injection in commercial games
+  allow_input_automation_in_live_mode: false
+  # Part 12 & Flaw-10: Confidence thresholds for OCR
+  ocr_verified_threshold: 0.90
+  ocr_uncertain_threshold: 0.60
+
+hardware_budget:
+  # Part 21: Resource limits for i7-14700HX + RTX 5060 (8GB VRAM) + 16GB System RAM
+  max_system_ram_percent: 80.0
+  ocr_use_gpu: true

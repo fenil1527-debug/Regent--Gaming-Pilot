@@ -1,0 +1,14 @@
+# gaming-agent-lab/OSROKBOT/config/roi_maps.yaml
+games:
+  "Rise of Kingdoms":
+    # Coordinates are relative percentages of the window: [x_min, y_min, x_max, y_max]
+    rois:
+      food_counter:  [0.65, 0.01, 0.72, 0.05]
+      wood_counter:  [0.73, 0.01, 0.80, 0.05]
+      stone_counter: [0.81, 0.01, 0.88, 0.05]
+      gold_counter:  [0.89, 0.01, 0.96, 0.05]
+
+  "Test_Screenshot":
+    # Full image crop (0% to 100%) for testing small standalone screenshots like Section 1.5
+    rois:
+      sample_number: [0.0, 0.0, 1.0, 1.0]
