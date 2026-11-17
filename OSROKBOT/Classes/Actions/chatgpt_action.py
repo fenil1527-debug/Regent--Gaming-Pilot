@@ -1,6 +1,11 @@
 import json
 from Actions.action import Action
-import openai
+try:
+    import openai
+    OPENAI_AVAILABLE = True
+except ImportError:
+    openai = None
+    OPENAI_AVAILABLE = False
 import os
 from dotenv import load_dotenv
 from Actions.manual_click_action import ManualClickAction
@@ -16,7 +21,8 @@ class ChatGPTAction(Action):
     def __init__(self,midterm=False, filepath="string.txt", delay=0, retard=0):
         
         load_dotenv()
-        openai.api_key = os.getenv('OPENAI_KEY')
+        if OPENAI_AVAILABLE and openai:
+            openai.api_key = os.getenv('OPENAI_KEY')
         self.message = ""
         self.midterm = midterm
         self.delay = delay
@@ -55,6 +61,9 @@ class ChatGPTAction(Action):
 
 
     def execute(self):
+        if not OPENAI_AVAILABLE or openai is None:
+            print("[ChatGPTAction] OpenAI package is not installed. Action skipped.")
+            return False
         #os.system('cls')
         self.message = "Question:" +  GlobalVars().Q + "\n" + "A:" + GlobalVars().A + "\n" + "B:" + GlobalVars().B + "\n" + "C:" + GlobalVars().C + "\n" + "D:" + GlobalVars().D
         print("\n\n")

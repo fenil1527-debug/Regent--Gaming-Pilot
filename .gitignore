@@ -28,5 +28,7 @@ desktop.ini
 debug_perception/
 screenshot_processed.png
 *.log
+*.jsonl
+compact_events.jsonl
 
 # Large media files (if needed, keep tracking media icons/readmes)
